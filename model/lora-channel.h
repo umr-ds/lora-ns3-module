@@ -42,7 +42,7 @@ class LoraTxMode;
 
 /**
  * Current state of the channel
- */ 
+ */
 enum WireState
 {
   IDLE,            /**< Channel is IDLE, no packet is being transmitted */
@@ -75,8 +75,8 @@ public:
   static TypeId GetTypeId (void);
 
   // Inherited methods
-  virtual uint32_t GetNDevices (void) const;
-  virtual Ptr<NetDevice> GetDevice (uint32_t i) const;
+  virtual std::size_t GetNDevices (void) const;
+  virtual Ptr<NetDevice> GetDevice (std::size_t i) const;
 
   /**
    * Send a packet out on the channel.
@@ -142,7 +142,7 @@ public:
    * device is currently active.
    * bool TransmitStart (Ptr<Packet> p, uint32_t srcId);
    */
-  
+
   bool TransmitStart (Ptr<Packet> p, uint16_t protocolNumber);
 
   /**
@@ -217,7 +217,7 @@ private:
   Ptr<LoraPropModel> m_prop;    //!< The propagation model.
   Ptr<LoraNoiseModel> m_noise;  //!< The noise model.
   /** Has Clear ever been called on the channel. */
-  bool m_cleared;              
+  bool m_cleared;
 
   /**
    * Send a packet up to the receiving LoraTransducer.
@@ -261,7 +261,7 @@ private:
    */
   WireState          m_state[3];
 
-  
+
 protected:
   virtual void DoDispose (void);
 
